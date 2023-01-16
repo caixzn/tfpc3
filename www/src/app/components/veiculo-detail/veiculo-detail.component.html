@@ -1,4 +1,7 @@
-<form [formGroup]="veiculoForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="veiculoForm" (ngSubmit)="save()">
+    <label>Id: </label>
+    <input type="text" disabled *ngIf="id" placeholder="{{id}}">
+
     <label for="placa">Placa: </label>
     <input id="placa" type="text" formControlName="placa" required>
     <small *ngIf="placa && placa.invalid && (placa.dirty || placa.touched)" style="color: red;">
@@ -52,6 +55,6 @@
         </option>
     </select>
 
-    <button type="submit" [disabled]="!veiculoForm.valid">Criar</button>
+    <button type="submit" [disabled]="!veiculoForm.valid">Atualizar</button>
     <button type="button" (click)="goBack()">Voltar</button>
 </form>

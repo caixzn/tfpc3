@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
-import { Marca } from '../../models/marca';
+import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { VeiculoService } from '../../services/veiculo.service';
+import { Marca } from '../../models/marca';
 import { Veiculo } from '../../models/veiculo';
 import { MarcaService } from '../../services/marca.service';
 
 @Component({
-  selector: 'tfpc3-veiculo-editor',
-  templateUrl: './veiculo-editor.component.html'
+  selector: 'tfpc3-veiculo-detail',
+  templateUrl: './veiculo-detail.component.html'
 })
-export class VeiculoEditorComponent implements OnInit {
+export class VeiculoDetailComponent implements OnInit {
+  id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
   veiculoForm = this.fb.group({
     placa: ['', [Validators.required, Validators.maxLength(8)]],
     cor: ['', [Validators.required, Validators.maxLength(20)]],
@@ -18,7 +20,6 @@ export class VeiculoEditorComponent implements OnInit {
     anoFabricacao: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
     marca: ['', [Validators.required]]
   });
-
   marcas: Array<Marca> = [];
 
   get placa() { return this.veiculoForm.get('placa'); }
@@ -29,12 +30,14 @@ export class VeiculoEditorComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private route: ActivatedRoute,
     private veiculoService: VeiculoService,
     private marcaService: MarcaService,
     private location: Location
   ) { }
 
   ngOnInit(): void {
+    this.getVeiculo();
     this.getMarcas();
   }
 
@@ -44,14 +47,27 @@ export class VeiculoEditorComponent implements OnInit {
     );
   }
 
-  onSubmit() {
-    let newVeiculo = this.veiculoForm.value as unknown as Veiculo;
-    this.veiculoService.addVeiculo(newVeiculo).subscribe(
-      () => this.veiculoForm.reset()
-    );
+  getVeiculo(): void {
+    this.veiculoService.getVeiculo(this.id)
+      .subscribe(veiculo =>
+        this.veiculoForm.setValue({
+          placa: veiculo.placa,
+          cor: veiculo.cor,
+          anoModelo: veiculo.anoModelo.toString(),
+          anoFabricacao: veiculo.anoFabricacao.toString(),
+          marca: veiculo.marca.sigla
+        })
+      );
   }
 
   goBack(): void {
     this.location.back();
+  }
+
+  save(): void {
+    let updated = this.veiculoForm.value as unknown as Veiculo;
+    updated.id = this.id;
+    console.log(updated);
+    this.veiculoService.updateVeiculo(updated).subscribe();
   }
 }

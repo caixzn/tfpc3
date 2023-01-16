@@ -1,4 +1,7 @@
-<form [formGroup]="marcaForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="marcaForm">
+    <label>Id: </label>
+    <input type="text" disabled *ngIf="id" placeholder="{{id}}">
+
     <label for="sigla">Sigla: </label>
     <input id="sigla" type="text" formControlName="sigla" required>
     <small *ngIf="sigla && sigla.invalid && (sigla.dirty || sigla.touched)" style="color: red;">
@@ -21,6 +24,6 @@
         </div>
     </small>
 
-    <button type="submit" [disabled]="!marcaForm.valid">Criar</button>
+    <button type="submit" (click)="save()" [disabled]="!marcaForm.valid">Atualizar</button>
     <button type="button" (click)="goBack()">Voltar</button>
 </form>
