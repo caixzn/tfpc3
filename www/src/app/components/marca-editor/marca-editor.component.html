@@ -1,0 +1,9 @@
+<form [formGroup]="marcaForm" (ngSubmit)="onSubmit()">
+    <label for="sigla">Sigla: </label>
+    <input id="sigla" type="text" formControlName="sigla" required>
+
+    <label for="descricao">Descrição: </label>
+    <input id="descricao" type="text" formControlName="descricao">
+
+    <button type="submit" [disabled]="!marcaForm.valid">Criar</button>
+</form>

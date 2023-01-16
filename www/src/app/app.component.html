@@ -1,0 +1,10 @@
+<h1>CRUD Veículos</h1>
+
+<nav>
+  <button type="button" (click)="toggleEditor('marca')">Criar Marca</button>
+  <button type="button" (click)="toggleEditor('veiculo')">Criar Veículo</button>
+</nav>
+
+<tfpc3-marca-editor *ngIf="showMarcaEditor"></tfpc3-marca-editor>
+
+<tfpc3-veiculo-editor *ngIf="showVeiculoEditor"></tfpc3-veiculo-editor>

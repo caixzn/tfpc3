@@ -1,0 +1,27 @@
+<form [formGroup]="veiculoForm" (ngSubmit)="onSubmit()">
+    
+    
+    
+    
+    <label for="placa">Placa: </label>
+    <input id="placa" type="text" formControlName="placa" required>
+
+    <label for="cor">Cor: </label>
+    <input id="cor" type="text" formControlName="cor">
+
+    <label for="anoModelo">Ano Modelo: </label>
+    <input id="anoModelo" type="text" formControlName="anoModelo">
+
+    <label for="anoFabricacao">Ano Fabricação: </label>
+    <input id="anoFabricacao" type="text" formControlName="anoFabricacao">
+
+    <label for="marca">Marca</label>
+    <select formControlName="marca">
+        <option [ngValue]="null" disabled>Escolha uma marca</option>
+        <option *ngFor="let marca of marcas" [ngValue]="marca">
+            {{marca.sigla}}
+        </option>
+    </select>
+
+    <button type="submit" [disabled]="!veiculoForm.valid">Criar</button>
+</form>
