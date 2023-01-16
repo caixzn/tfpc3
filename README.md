@@ -37,7 +37,7 @@ java -jar api-0.0.1-SNAPSHOT.jar
 
 **c)** *Crie o frontend em Angular (framework utilizado na disciplina), que deve conter uma página principal com um menu contendo opções de cadastrar marca, cadastrar veículos (as marcas deverão ser listadas em um combo box no momento do cadastro do veículo), listar veículos (devem ser exibidos os dados do veículo e a marca dele, juntamente com as opções de excluir e editar) e listar marcas (com as opções de excluir e editar).*
 
-O código fonte do frontend se encontra na pasta ``www``, para executar basta seguir o seguinte comando dentro da pasta:
+O código fonte do frontend se encontra na pasta ``www``, para executar basta utilizar o seguinte comando dentro da pasta:
 ```sh
 ng serve --open
 ```
