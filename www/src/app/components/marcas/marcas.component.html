@@ -1,0 +1,9 @@
+<ul>
+    <li *ngFor="let marca of marcas">
+        <a routerLink="/marca/{{marca.id}}">
+            <span>{{marca.id}}</span> Sigla: {{marca.sigla}}
+            <p>Descrição: {{marca.descricao}}</p>
+        </a>
+        <button type="button" title="apagar marca" (click)="delete(marca)">x</button>
+    </li>
+</ul>

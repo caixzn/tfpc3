@@ -55,7 +55,7 @@ export class VeiculoDetailComponent implements OnInit {
           cor: veiculo.cor,
           anoModelo: veiculo.anoModelo.toString(),
           anoFabricacao: veiculo.anoFabricacao.toString(),
-          marca: veiculo.marca.sigla
+          marca: ''
         })
       );
   }

@@ -1,0 +1,12 @@
+<ul>
+    <li *ngFor="let v of veiculos">
+        <a routerLink="/veiculo/{{v.id}}">
+            <span>{{v.id}}</span> Placa: {{v.placa}}
+            <p>Marca: {{v.marca.sigla}}</p>
+            <p>Ano do modelo: {{v.anoModelo}}</p>
+            <p>Cor: {{v.cor}}</p>
+            <p>Ano de fabricação: {{v.anoFabricacao}}</p>
+        </a>
+        <button type="button" title="apagar veiculo" (click)="delete(v)">x</button>
+    </li>
+</ul>

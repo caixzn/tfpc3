@@ -10,6 +10,8 @@ import { MarcaEditorComponent } from './components/marca-editor/marca-editor.com
 import { VeiculoEditorComponent } from './components/veiculo-editor/veiculo-editor.component';
 import { VeiculoDetailComponent } from './components/veiculo-detail/veiculo-detail.component';
 import { MarcaDetailComponent } from './components/marca-detail/marca-detail.component';
+import { MarcasComponent } from './components/marcas/marcas.component';
+import { VeiculosComponent } from './components/veiculos/veiculos.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { MarcaDetailComponent } from './components/marca-detail/marca-detail.com
     MarcaEditorComponent,
     VeiculoEditorComponent,
     VeiculoDetailComponent,
-    MarcaDetailComponent
+    MarcaDetailComponent,
+    MarcasComponent,
+    VeiculosComponent
   ],
   imports: [
     BrowserModule,
